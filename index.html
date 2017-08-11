@@ -1,0 +1,62 @@
+<head>
+	<meta charset="utf-8">
+	<title>Chú Vịt Con</title>
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+			overflow-y: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+
+	<script>
+		var divHeight = 200;
+		var colorList = [
+			'#EF5350', '#EC407A', '#AB47BC', '#7E57C2', '#5C6BC0', 
+			'#42A5F5', '#29B6F6', '#26C6DA', '#26A69A', '#66BB6A',
+			'#9CCC65', '#D4E157', '#FFEE58', '#FFCA28', '#FFA726',
+			'#9CCC65', '#D4E157', '#FFEE58', '#FFCA28', '#FFA726'
+		]
+		var container = document.getElementById('container');
+
+		setInterval(() => {
+			container.innerHTML = "";
+			build_wall();
+		}, 50);
+
+		function build_wall()
+		{
+			for (var i = 0; i < window.innerHeight; i += divHeight) {
+				build_wall_row(divHeight);
+			}
+		}
+
+		// Create a row of div random width in percentage to fit screen
+		function build_wall_row(height = 50)
+		{
+			var curWidth = 0;
+			var maxWidth = window.innerWidth;
+
+			while (curWidth < maxWidth) {
+				do {
+					var tempWidth = parseInt(Math.random() * 100);
+				} while (tempWidth < 10);
+
+				// If new width is larger than maxwidth, add the remain to prevent overflow
+				tempWidth = Math.min(tempWidth, maxWidth - curWidth);
+				curWidth += tempWidth;
+
+				// Build the element from calculated width
+				var element = document.createElement('div');
+				element.style.backgroundColor = colorList[parseInt(Math.random() * 100 % colorList.length)];
+				element.style.width = tempWidth;
+				element.style.height = height;
+				element.style.cssFloat = 'left';
+				container.appendChild(element);
+			}
+		}
+	</script>
+</body>
