@@ -1,42 +1,95 @@
 <head>
 	<meta charset="utf-8">
-	<title>Chú Vịt Con</title>
+	<title>The Most Annoying Website Ever!</title>
 	<style>
 		html, body {
 			margin: 0;
 			padding: 0;
 			overflow-y: hidden;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		.title {
+			font-family: Impact, "Arial Black", sans-serif;
+			font-weight: bold;
+			font-size: 4em;
+			color: white;
+			text-transform: uppercase;
+		}
+
+		.center-container {
+			position: absolute;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			width: 100vw;
+			height: 100vh;
+		}
+
+		#annoyingCookie {
+			position: fixed;
+			display: flex;
+			bottom: 0;
+			padding: 20px 50px;
+			background: #8538bf;
+			color: white;
+			transition: transform .6s ease-out;
+			transform: translateY(100%);
+		}
+
+		#annoyingCookie.in {
+			transform: translateY(0%);
+		}
+
+		#cookieOK {
+			padding: 10px;
+			color: #111;
+			background: #ffe633;
+			width: 200px;
+			text-align: center;
+			border-radius: 5px;
+			cursor: pointer;
 		}
 	</style>
 </head>
 <body>
-	<div id="container"></div>
+	<div id="annoyingBackground"></div>
+
+	<div class="center-container">
+		<h1 class="title">
+			The Most Annoying Website Ever!
+		</h1>
+	</div>
+
+	<div id="annoyingCookie">
+		<span>This website uses cookies to ensure you get the best experience on our website. By using our website you consent to all cookies in accordance with our Cookie Policy.</span>
+		<a id="cookieOK">Accept</a>
+	</div>
 
 	<script>
-		var divHeight = 200;
+		// The Annoying Background
 		var colorList = [
 			'#EF5350', '#EC407A', '#AB47BC', '#7E57C2', '#5C6BC0', 
 			'#42A5F5', '#29B6F6', '#26C6DA', '#26A69A', '#66BB6A',
 			'#9CCC65', '#D4E157', '#FFEE58', '#FFCA28', '#FFA726',
 			'#9CCC65', '#D4E157', '#FFEE58', '#FFCA28', '#FFA726'
-		]
-		var container = document.getElementById('container');
-
-		setInterval(() => {
-			container.innerHTML = "";
+		];
+		var divHeight = window.innerHeight / 5;
+		var annoyingBackground = document.getElementById('annoyingBackground');
+		// build_wall();
+		var annoyingBackground_interval = setInterval(() => {
+			annoyingBackground.innerHTML = "";
 			build_wall();
-		}, 50);
+		}, 30);
 
-		function build_wall()
-		{
+		function build_wall() {
 			for (var i = 0; i < window.innerHeight; i += divHeight) {
 				build_wall_row(divHeight);
 			}
 		}
 
-		// Create a row of div random width in percentage to fit screen
-		function build_wall_row(height = 50)
-		{
+		function build_wall_row(height = 50) {
 			var curWidth = 0;
 			var maxWidth = window.innerWidth;
 
@@ -55,8 +108,19 @@
 				element.style.width = tempWidth;
 				element.style.height = height;
 				element.style.cssFloat = 'left';
-				container.appendChild(element);
+				annoyingBackground.appendChild(element);
 			}
 		}
+
+		// Annoying Cookie permission
+		var annoyingCookie = document.getElementById('annoyingCookie');
+		var cookieOK = document.getElementById('cookieOK');
+		setTimeout(() => {
+			annoyingCookie.classList = "in";
+		}, 1000);
+
+		cookieOK.addEventListener("click", function() {
+			annoyingCookie.classList = "";
+		});
 	</script>
 </body>
