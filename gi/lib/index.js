@@ -4,7 +4,8 @@
 
     let init = () => {
         introVideo.oncanplay = () => {
-            console.log('video ready sir')
+            introVideo.className = "fade-in"
+            // console.log('video ready sir')
         }
 
         // Wait for video intro

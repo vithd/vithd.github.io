@@ -55,6 +55,10 @@ header > .overlay {
     height: 60vh;
 }
 
+#introVideo {
+    opacity: 0;
+}
+
 .body-container {
     width: 80vw;
 }
@@ -67,11 +71,11 @@ header > .overlay {
 }
 
 .fade-in {
-    animation: fadeIn 1s cubic-bezier(0.23, 1, 0.32, 1);
+    animation: fadeIn 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 .fade-out {
-    animation: fadeOut 1s cubic-bezier(0.23, 1, 0.32, 1);
+    animation: fadeOut 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 @keyframes fadeIn {
