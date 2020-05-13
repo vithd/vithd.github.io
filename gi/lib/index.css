@@ -53,6 +53,7 @@ header {
 #btnMenu {
     position: relative;
     z-index: 2;
+    user-select: none;
 }
 
 #menuItems {
