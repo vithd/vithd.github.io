@@ -1,0 +1,124 @@
+.hamburger {
+    font: inherit;
+    display: inline-block;
+    overflow: visible;
+    margin: 0;
+    padding: 15px;
+    cursor: pointer;
+    transition-timing-function: linear;
+    transition-duration: .15s;
+    transition-property: opacity,filter;
+    text-transform: none;
+    color: inherit;
+    border: 0;
+    background-color: transparent
+}
+
+.hamburger-box {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px
+}
+
+
+.hamburger-inner {
+    top: 50%;
+    display: block;
+    margin-top: -2px
+}
+
+.hamburger-inner,.hamburger-inner:after,.hamburger-inner:before {
+    position: absolute;
+    width: 40px;
+    height: 4px;
+    transition-timing-function: ease;
+    transition-duration: .15s;
+    transition-property: transform;
+    border-radius: 4px;
+    background-color: #111;
+}
+
+.hamburger-inner:after,.hamburger-inner:before {
+    display: block;
+    content: ""
+}
+
+.hamburger-inner:before {
+    top: -10px
+}
+
+.hamburger-inner:after {
+    bottom: -10px
+}
+
+.hamburger.is-active:hover {
+
+}
+
+.hamburger:hover {
+
+}
+
+
+.hamburger--elastic .hamburger-inner {
+    top: 2px;
+    transition-timing-function: cubic-bezier(.68,-.55,.265,1.55);
+    transition-duration: .275s
+}
+
+.hamburger--elastic .hamburger-inner:before {
+    top: 10px;
+    transition: opacity .125s ease .275s
+}
+
+.hamburger--elastic .hamburger-inner:after {
+    top: 20px;
+    transition: transform .275s cubic-bezier(.68,-.55,.265,1.55)
+}
+
+.hamburger--elastic.is-active .hamburger-inner {
+    transition-delay: 75ms;
+    transform: translate3d(0,10px,0) rotate(135deg)
+}
+
+.hamburger--elastic.is-active .hamburger-inner:before {
+    transition-delay: 0s;
+    opacity: 0
+}
+
+.hamburger--elastic.is-active .hamburger-inner:after {
+    transition-delay: 75ms;
+    transform: translate3d(0,-20px,0) rotate(-270deg)
+}
+
+.hamburger--elastic-r .hamburger-inner {
+    top: 2px;
+    transition-timing-function: cubic-bezier(.68,-.55,.265,1.55);
+    transition-duration: .275s
+}
+
+.hamburger--elastic-r .hamburger-inner:before {
+    top: 10px;
+    transition: opacity .125s ease .275s
+}
+
+.hamburger--elastic-r .hamburger-inner:after {
+    top: 20px;
+    transition: transform .275s cubic-bezier(.68,-.55,.265,1.55)
+}
+
+.hamburger--elastic-r.is-active .hamburger-inner {
+    transition-delay: 75ms;
+    transform: translate3d(0,10px,0) rotate(-135deg)
+}
+
+.hamburger--elastic-r.is-active .hamburger-inner:before {
+    transition-delay: 0s;
+    opacity: 0
+}
+
+.hamburger--elastic-r.is-active .hamburger-inner:after {
+    transition-delay: 75ms;
+    transform: translate3d(0,-20px,0) rotate(270deg)
+}

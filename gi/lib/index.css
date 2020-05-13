@@ -1,5 +1,69 @@
+html, body {
+    font-family: 'Lato', sans-serif;
+    color: #111;
+}
+
+
 header {
     width: 100%;
+}
+
+header #menu {
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    display: flex;
+    z-index: 2;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 40px;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+nav > #logo > img {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+
+#btnContact {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all .2s ease-out;
+}
+
+#btnContact > span {
+    width: 0px;
+    padding-left: 8px;
+    overflow: hidden;
+    transition: all .2s ease-out;
+}
+
+#btnContact:hover {
+    background-color: #111;
+    color: white;
+}
+
+#btnContact:hover > svg {
+    fill: white;
+}
+
+#btnContact:hover > span {
+    width: 65px;
+}
+
+#btnContact > svg {
+    width: 30px;
+    height: 30px;
+    transition: all .2s ease-out;
 }
 
 header > .cover {
