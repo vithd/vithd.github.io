@@ -34,7 +34,7 @@
             // Wait for video intro
             setTimeout(() => {
                 this.header.className = "show"
-            }, 1000)
+            }, 5000)
         }
     }
 
