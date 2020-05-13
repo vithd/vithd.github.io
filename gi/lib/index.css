@@ -151,12 +151,13 @@ nav > #logo > img {
     width: 0px;
     padding-left: 8px;
     overflow: hidden;
-    transition: all .2s ease-out;
+    transition: all .2s cubic-bezier(0.23, 1, 0.32, 1);
+    color: white;
+
 }
 
 #btnContact:hover {
     background-color: #111;
-    color: white;
 }
 
 #btnContact:hover > svg {
