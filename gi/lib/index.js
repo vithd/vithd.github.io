@@ -17,8 +17,10 @@
             this.btnMenu.addEventListener('click', () => {
                 if (this.btnMenu.classList.contains('is-active')) {
                     this.btnMenu.classList.remove('is-active')
+                    this.menu.classList.remove('active')
                 } else {
                     this.btnMenu.classList.add('is-active')
+                    this.menu.classList.add('active')
                 }
             })
         }
@@ -32,7 +34,7 @@
             // Wait for video intro
             setTimeout(() => {
                 this.header.className = "show"
-            }, 5000)
+            }, 1000)
         }
     }
 

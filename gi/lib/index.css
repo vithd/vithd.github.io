@@ -8,7 +8,107 @@ header {
     width: 100%;
 }
 
-header #menu {
+#menu {
+    position: relative;
+}
+
+#menu > .content-wrapper {
+    position: absolute;
+    width: 2000px;
+    height: 2000px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path .5s cubic-bezier(0.23, 1, 0.32, 1);
+    padding: 50% 0 0 50%;
+    background: linear-gradient(135deg, #111111 21px, #111111 22px, #111111 24px, transparent 24px, transparent 67px, #000000 67px, #111111 69px, transparent 69px), linear-gradient(225deg, #111111 21px, #111111 22px, #020202 24px, transparent 24px, transparent 67px, #020202 67px, #111111 69px, #111111 69px)0 64px;
+    background-color: #111;
+    background-size: 64px 128px;
+}
+
+/* #menu:hover > .content-wrapper {
+    width: 80px;
+    height: 80px;
+    animation: menu-hover 4s ease-in-out infinite;
+} */
+
+#menu.active > .content-wrapper {
+    clip-path: circle(30% at 50% 50%);
+    transition: clip-path 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+#menu > .content-wrapper > .content {
+    color: #eee;
+    padding-left: 1000px;
+    padding-top: 1000px;
+}
+
+#menu.active .hamburger-inner, 
+#menu.active .hamburger-inner:after, 
+#menu.active .hamburger-inner:before {
+    background-color: #fff;
+}
+
+#btnMenu {
+    position: relative;
+    z-index: 2;
+}
+
+#menuItems {
+    list-style: none;
+}
+
+#menuItems > li {
+    padding: .5em 0;
+}
+
+#menuItems > li > a {
+    position: relative;
+    color: #b3b3b3;
+    text-transform: uppercase;
+    font-size: 2em;
+    font-weight: bold;
+    transition: color .2s ease-out;
+}
+
+#menuItems > li > a:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 110%;
+    background-color: #292929;
+    width: 500px;
+    height: 1px;
+    transition: background-color .2s ease-out;
+}
+
+#menuItems > li > a:hover {
+    color: #eee;
+}
+
+#menuItems > li > a:hover:after {
+    background-color: #eee;
+}
+
+#menuItems .more {
+    color: #999;
+}
+
+#menuItems .social svg {
+    width: 32px;
+    height: 32px;
+    fill: #999;
+    padding-right: 7px;
+}
+
+#menuItems .social svg:hover {
+    fill: #eee;
+}
+
+#menuItems .credit {
+    margin-top: 30px;
+    font-size: .8em;
 }
 
 nav {
@@ -150,4 +250,10 @@ header > .overlay {
 @keyframes fadeOut {
     0% {opacity: 1;}
     100% {opacity: 0;}
+}
+
+@keyframes menu-hover {
+    0% {width: 80px; height: 80px;}
+    50% {width: 100px; height: 100px;}
+    100% {width: 80px; height: 80px;}
 }
