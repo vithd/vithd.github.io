@@ -118,7 +118,7 @@ nav {
     z-index: 2;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 40px;
+    padding: 30px 40px;
     background-color: white;
     width: 100%;
     box-sizing: border-box;
@@ -133,7 +133,7 @@ header.show nav {
 
 nav > #logo > img {
     width: 120px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 
@@ -145,6 +145,7 @@ nav > #logo > img {
     border-radius: 30px;
     font-weight: bold;
     transition: all .2s ease-out;
+    touch-action: none;
 }
 
 #btnContact > span {
@@ -239,6 +240,10 @@ header > .overlay {
     header > .cover > img {
         height: 100%;
         width: auto;
+    }
+
+    nav {
+        padding: 30px 10px;
     }
 }
 
