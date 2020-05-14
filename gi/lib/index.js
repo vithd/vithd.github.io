@@ -32,10 +32,17 @@
             }
 
             // Wait for video intro
+            this.show()
+        }
+
+        show() {
             this.header.classList.add("active")
             setTimeout(() => {
                 this.header.classList.add("active")
             }, 3000)
+
+            // new Perspective('.first-header', 3)
+            new Perspective('.column:nth-child(1) .context', 1)
         }
     }
 

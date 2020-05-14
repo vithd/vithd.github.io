@@ -224,7 +224,7 @@ header > .cover > .mask.bottom {
 }
 
 header.active > .cover {
-    height: 70vh;
+    height: 80vh;
 }
 
 header.active > .cover > .mask.top {
