@@ -27,13 +27,14 @@
 
         init = () => {
             this.introVideo.oncanplay = () => {
-                this.introVideo.className = "fade-in"
+                this.introVideo.classList.add("fade-in")
                 // console.log('video ready sir')
             }
 
             // Wait for video intro
+            this.header.classList.add("active")
             setTimeout(() => {
-                this.header.className = "show"
+                this.header.classList.add("active")
             }, 3000)
         }
     }

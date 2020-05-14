@@ -3,6 +3,19 @@ html, body {
     color: #111;
 }
 
+h3, h4, h5, h6 {
+    /* font-family: 'PT Sans', sans-serif; */
+}
+
+h4 {
+    font-size: 1.8em;
+    margin: 1em 0 .5em;
+}
+
+/****************
+    HEADER & NAV
+****************/
+
 header {
     width: 100%;
 }
@@ -19,7 +32,7 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     clip-path: circle(0% at 50% 50%);
-    transition: clip-path .5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: clip-path .3s cubic-bezier(0.23, 1, 0.32, 1);
     padding: 50% 0 0 50%;
     background: linear-gradient(135deg, #111111 21px, #111111 22px, #111111 24px, transparent 24px, transparent 67px, #000000 67px, #111111 69px, transparent 69px), linear-gradient(225deg, #111111 21px, #111111 22px, #020202 24px, transparent 24px, transparent 67px, #020202 67px, #111111 69px, #111111 69px)0 64px;
     background-color: #111;
@@ -72,22 +85,25 @@ header {
     transition: color .2s ease-out;
 }
 
-#menuItems > li > a:after {
+#menuItems > li > a:before {
     content: "";
     position: absolute;
     top: 50%;
-    right: 110%;
+    left: 0;
     background-color: #292929;
     width: 500px;
     height: 1px;
-    transition: background-color .2s ease-out;
+    transform: translateX(-110%);
+    transition: all .2s ease-out;
+    transition-property: background-color, transform;
 }
 
 #menuItems > li > a:hover {
     color: #eee;
 }
 
-#menuItems > li > a:hover:after {
+#menuItems > li > a:hover:before {
+    transform: translateX(-105%);
     background-color: #eee;
 }
 
@@ -125,7 +141,7 @@ nav {
     transform: translateY(-100%);
 }
 
-header.show nav {
+header.active nav {
     transform: translateY(0);
     transition: transform 2.5s cubic-bezier(0.23, 1, 0.32, 1);
     transition-delay: .2s;
@@ -207,15 +223,15 @@ header > .cover > .mask.bottom {
     bottom: 0;
 }
 
-header.show > .cover {
+header.active > .cover {
     height: 70vh;
 }
 
-header.show > .cover > .mask.top {
+header.active > .cover > .mask.top {
     height: 150px;
 }
 
-header.show > .cover > .mask.bottom {
+header.active > .cover > .mask.bottom {
     height: 150px;
 }
 
@@ -232,9 +248,55 @@ header > .overlay {
     opacity: 0;
 }
 
+/****************
+    BODY
+****************/
+
 .body-container {
     width: 80vw;
+    margin: 100px auto;
 }
+
+.column-container  {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column-container > .column  {
+    position: relative;
+    flex: 1 0 100%;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+}
+
+.column-container > .column.two  {
+    flex-basis: 50%; /* explanation below */
+}
+
+.column.text > .context {
+    
+}
+
+.column > .context p {
+    font-size: .95em;
+    line-height: 1.6em;
+    letter-spacing: .04em;
+}
+
+.first-header {
+    position: absolute;
+    top: calc(-2.5em + .5em - 50px);
+    left: 0;
+    width: 80vw;
+    font-family:"Times New Roman";
+    font-size: 5em;
+    line-height: .9em;
+}
+
+/****************
+    RESPONSIVE
+****************/
 
 @media (orientation: portrait) {
     header > .cover > img {
@@ -246,6 +308,10 @@ header > .overlay {
         padding: 30px 10px;
     }
 }
+
+/****************
+    HELPERS
+****************/
 
 .fade-in {
     animation: fadeIn 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
