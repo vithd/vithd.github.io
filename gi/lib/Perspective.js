@@ -58,7 +58,6 @@ class Perspective {
         boundingOffset >= 0
       ) {
         newY = boundingOffset * this.params.amount
-        console.log(newY)
         this.$containers[i].dataset.translateY = newY
       }
 

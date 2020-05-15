@@ -11,6 +11,8 @@
             this.btnMenu = document.querySelector('#btnMenu')
             this.header = document.querySelector('header')
             this.introVideo = document.querySelector('#introVideo')
+            this.sloganFlipContainer = document.querySelector('.flip-container')
+            this.sloganFlipTexts = document.querySelector('.flip-container > span')
         }
 
         bind() {
@@ -45,22 +47,36 @@
                 this.header.classList.add("active")
             }, 1000)
 
-            new Perspective('.slogan', -0.05, 0.1)
-            new Perspective('.column:nth-child(1) .context', 0.8)
-            new Perspective('.column:nth-child(2) .context', 0.5)
+            new Perspective('#whoweare .slogan', -0.05, 0.1)
+            new Perspective('#whoweare .column:nth-child(1) .context', 0.8)
+            new Perspective('#whoweare .column:nth-child(2) .context', 0.5)
 
-            new Perspective('.column:nth-child(3) .context', 0.5)
-            new Perspective('.column:nth-child(4) .context', 0.8)
+            new Perspective('#whoweare .column:nth-child(3) .context', 0.5)
+            new Perspective('#whoweare .column:nth-child(4) .context', 0.8)
 
-            new Perspective('.column:nth-child(5) .context', 0.4)
-            new Perspective('.column:nth-child(6) .context', 0.6)
-            new Perspective('.column:nth-child(7) .context', 0.5)
+            new Perspective('#whoweare .column:nth-child(5) .context', 0.4)
+            new Perspective('#whoweare .column:nth-child(6) .context', 0.6)
+            new Perspective('#whoweare .column:nth-child(7) .context', 0.5)
 
-            new Perspective('.column:nth-child(8) .context', 0.8)
-            new Perspective('.column:nth-child(9) .context', 0.5)
+            new Perspective('#whoweare .column:nth-child(8) .context', 0.8)
+            new Perspective('#whoweare .column:nth-child(9) .context', 0.5)
 
-            new Perspective('.slogan-2', -1, 0.1)
+            new Perspective('#whoweare .slogan-2', -1, 0.1)
 
+            this.sloganFlipper()
+
+        }
+
+        sloganFlipper() {
+            setInterval(() => {
+                // Last becomes first
+                let texts = document.querySelectorAll('.flip-container > span')
+                texts[0].classList.remove('flip')
+                texts[0].before(texts[ texts.length - 1 ])
+                setTimeout(() => {
+                    texts[ texts.length - 1 ].classList.add('flip')
+                }, 50)
+            }, 3000)
         }
     }
 
