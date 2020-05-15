@@ -7,19 +7,27 @@
  */
 
 class Perspective {
-  constructor(_containerSelector, _params) {
+  constructor(_containerSelector, _params = 0.5, returnAt = 0.6) {
     // Init DOM elements
     this.$containers = document.querySelectorAll(_containerSelector)
+    this._params = {..._params}
 
     // Init params
     if (typeof (_params) === "number") {
-      _params = { amount: _params }
+      this._params.amount = _params
+    }
+
+    if (typeof (returnAt) === "number") {
+      this._params.returnAt = returnAt
     }
 
     this.params = {
-      amount: _params.amount || 100, // percentage
-      duration: _params.duration || 1000,
-      timingFunction: _params.timingFunction || 'cubic-bezier(0.23, 1, 0.32, 1)',
+      // direction: _params.direction == 'down' ? -1 : 1, // up or down
+      returnAt: this._params.returnAt || 0.5, // 0 -> 1 When element returns to its origin. 0 mean top most of window
+      amount: this._params.amount || 1, // 0 -> 1 Amount of displacement
+
+      duration: this._params.duration || 1000, // miliseconds
+      timingFunction: this._params.timingFunction || 'cubic-bezier(0.23, 1, 0.32, 1)',
     }
 
     this._init()
@@ -37,27 +45,25 @@ class Perspective {
 
   _handleScroll(_event) {
     for (let i = 0; i < this.$containers.length; i++) {
-      // Only run when Y position is in viewport
+      let newY = 0
       let bounding = this.$containers[i].getBoundingClientRect()
+      let translateY = parseInt(this.$containers[i].dataset.translateY) || 0
+      let boundingTop = bounding.top - translateY // Top position before Translate
       let winHeight = (window.innerHeight || document.documentElement.clientHeight)
+      let boundingOffset = boundingTop - this.params.returnAt * winHeight
+      
+      // Only run when the element is in viewport
       if (
-        bounding.top >= 0 &&
-        bounding.top <= (window.innerHeight || document.documentElement.clientHeight)
-        ) {
-        let scrollPercent = ((bounding.top) / winHeight * 80) * this.params.amount / 100
-        let newY = -scrollPercent
-        this.$containers[i].style.transform = `translateY(${newY}px)`
-      } else {
-        this.$containers[i].style.transform = `translateY(0px)`
+        boundingTop >= 0 &&
+        boundingTop <= winHeight + bounding.height &&
+        boundingOffset >= 0
+      ) {
+        newY = boundingOffset * this.params.amount
+        console.log(newY)
+        this.$containers[i].dataset.translateY = newY
       }
+
+      this.$containers[i].style.transform = `translateY(${newY}px)`
     }
   }
-
-  _isInViewport = function (elem) {
-    
-    return (
-      bounding.top >= 0 &&
-      bounding.top <= (window.innerHeight || document.documentElement.clientHeight)
-    );
-  };
 }

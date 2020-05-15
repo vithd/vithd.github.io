@@ -224,7 +224,7 @@ header > .cover > .mask.bottom {
 }
 
 header.active > .cover {
-    height: 70vh;
+    height: 85vh;
 }
 
 header.active > .cover > .mask.top {
@@ -333,7 +333,7 @@ header > .overlay {
 }
 
 
-.first-header {
+.slogan {
     position: absolute;
     top: calc(-2.5em + .5em - 50px);
     left: 30px;
